@@ -1,0 +1,22 @@
+{
+	"name": "dirty-check-zonejs",
+	"version": "1.0.0",
+	"description": "Creating dirty-checking like Angular Framework do using ZoneJS.",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"dependencies": {
+		"rxjs": "^6.5.5",
+		"zone.js": "^0.10.3"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ericferreira1992/dirty-check-zonejs.git"
+	},
+	"author": "Eric Ferreira",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/ericferreira1992/dirty-check-zonejs/issues"
+	},
+	"homepage": "https://github.com/ericferreira1992/dirty-check-zonejs#readme"
+}

@@ -1,2 +1,2 @@
-# dirty-check-zonejs
-Creating dirty-checking like Angular Framework do.
+# Dirty-checking with zone.js
+Creating dirty-checking like Angular Framework do using ZoneJS.

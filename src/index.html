@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Custom Dirty Checking Using CustomZone</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <script type="text/javascript" src="../node_modules/zone.js/dist/zone.js"></script>
+        <script type="text/javascript" src="../node_modules/rxjs/bundles/rxjs.umd.js"></script>
+        <script type="text/javascript" src="event-emitter.js"></script>
+        <script type="text/javascript" src="custom-zone.js"></script>
+    </head>
+    <body>
+        
+        <div id="terminal"></div>
+        <button id="subButton">-10</button>
+        <button id="addButton">+10</button>
+        
+        <script>
+            let results = 0;
+            let add;
+
+            const customZone = new CustomZone();
+
+            customZone.run(() => {
+                let addBtn = document.getElementById('addButton')
+                addBtn.onclick = () => {
+                    results += 10;
+                };
+            });
+
+            customZone.runOutsideZ(() => {
+                let subBtn = document.getElementById('subButton')
+                subBtn.onclick = () => {
+                    results -= 10;
+                    render();
+                };
+            });
+
+            customZone.onMicrotaskEmpty.subscribe({
+                next: () => {
+                    console.log('tick() called');
+                    render();
+                }
+            });
+
+            let render = () => {
+                const terminal = document.getElementById('terminal');
+                terminal.innerHTML = `Result: ${results}`;
+            };
+
+            render();
+        </script>
+    </body>
+</html>
